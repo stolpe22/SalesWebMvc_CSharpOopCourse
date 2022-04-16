@@ -21,9 +21,10 @@ namespace SalesWebMvc.Models
         {
             Id = id;
             Name = name;
-        } 
+        }
         #endregion
 
+        #region Methods
         public void AddSeller(Seller seller)
         {
             Sellers.Add(seller);
@@ -32,6 +33,7 @@ namespace SalesWebMvc.Models
         public double TotalSales(DateTime initial, DateTime final)
         {
             return Sellers.Sum(seller => seller.TotalSales(initial, final)); //Aproveitando o metodo criado na classe Seller
-        }
+        } 
+        #endregion
     }
 }
