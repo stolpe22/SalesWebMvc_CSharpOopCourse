@@ -3,6 +3,7 @@ using SalesWebMvc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
 namespace SalesWebMvc.Services
@@ -17,7 +18,7 @@ namespace SalesWebMvc.Services
         }
         public List<Seller> FindAll() => _context.Seller.ToList();
 
-        public Seller FindById(int id) => _context.Seller.FirstOrDefault(obj => obj.Id == id);
+        public Seller FindById(int id) => _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
 
         public void Insert(Seller obj)
         {
